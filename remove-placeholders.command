@@ -1,0 +1,1 @@
+find zenbuPortable -name .placeholder -exec rm {} \;
