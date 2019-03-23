@@ -1,1 +1,1 @@
-find zenbuPortable -name .placeholder -exec rm {} \;
+find zenbuPortable -name .gitkeep -exec rm {} \;
