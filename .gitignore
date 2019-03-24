@@ -43,3 +43,8 @@
 
 !/zenbuPortable/ws/.gitkeep
 !/zenbuPortable/ws/repos/.gitkeep
+
+!/zenbuPortable/VSCode.command
+!/zenbuPortable/VSCode.lnk
+!/zenbuPortable/zenbuConsole.command
+!/zenbuPortable/zenbuConsole.lnk
