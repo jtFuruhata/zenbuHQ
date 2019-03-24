@@ -1,2 +1,45 @@
-# zenbuPortable specific
-.gitconfig
+#
+# 【zenbuPortable】 zenbuManifest .gitignore
+# Ver1.00.190322a
+# Concepted by TANAHASHI, Jiro (aka jtFuruhata)
+# Copyright (C) 2019 jtLab, Hokkaido Information University
+#
+# These files are user setting.
+#   /zenbuPortable/.ssh/ssh_id
+#   /zenbuPortable/.vscode/default/user-data/User/settings.json
+#
+/zenbuPortable/*
+!/zenbuPortable/.ssh/ssh_id
+
+!/zenbuPortable/.vscode/.gitkeep
+!/zenbuPortable/.vscode/default/.gitkeep
+!/zenbuPortable/.vscode/default/extensions/.gitkeep
+!/zenbuPortable/.vscode/default/user-data/.gitkeep
+!/zenbuPortable/.vscode/default/user-data/User/settings.json
+
+!/zenbuPortable/apps/.gitkeep
+!/zenbuPortable/apps/linux/.gitkeep
+!/zenbuPortable/apps/mac/.gitkeep
+!/zenbuPortable/apps/mac/git/.gitkeep
+!/zenbuPortable/apps/mac/Visual Studio Code.app/.gitkeep
+!/zenbuPortable/apps/win/.gitkeep
+!/zenbuPortable/apps/win/msys64/.gitkeep
+!/zenbuPortable/apps/win/PortableGit/.gitkeep
+!/zenbuPortable/apps/win/VSCode/.gitkeep
+
+!/zenbuPortable/scripts/zenbuDetector.sh
+!/zenbuPortable/scripts/zenbuEnv.sh
+!/zenbuPortable/scripts/zenbuOpenner.command
+!/zenbuPortable/scripts/zenbuPrompt.sh
+!/zenbuPortable/scripts/zenbuSummoner.command
+!/zenbuPortable/scripts/zenbuVSCode.command
+!/zenbuPortable/scripts/linux/set-depend.sh
+!/zenbuPortable/scripts/mac/macOSname.sh
+!/zenbuPortable/scripts/mac/set-depend.sh
+!/zenbuPortable/scripts/win/bash.cmd
+!/zenbuPortable/scripts/win/portableGitPortal.sh
+!/zenbuPortable/scripts/win/set-depend.sh
+!/zenbuPortable/scripts/win/winntOSname.sh
+
+!/zenbuPortable/ws/.gitkeep
+!/zenbuPortable/ws/repos/.gitkeep
