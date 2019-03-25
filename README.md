@@ -3,12 +3,15 @@
 ## Welcome to zenbuHQ, the basecamp for all of zenbuPortables.
 【zenbuPortable】is still UNDER CONSTRUCTION here.
 
-How to Install apps:
+### Getting Started:
+- See [wiki](https://github.com/jtFuruhata/zenbuHQ/wiki)
+
+### How to Install apps:
 - put "truly" portable applications into apps slots
     - "truly" means no symlinks, no socket files, etc... be able to run on FAT32.
 - that's all....... er,  applogize for inconvinience yet.
 
-How to use zenbuVSCode at first time (Windows + Japanese Keyboard)
+### How to use zenbuVSCode at first time (Windows + Japanese Keyboard)
 
 - Double-click `VSCode`
 - Hit `Ctrl`+`Alt`+`O` to open workspace
@@ -16,7 +19,7 @@ How to use zenbuVSCode at first time (Windows + Japanese Keyboard)
 - Hit `Ctrl`+`Alt`+`@` to enable workspace shell settings
 - Hit `Ctrl`+`@` to open zenbuConsole
 
-How to use zenbuVSCode at first time (Mac + Japanese Keyboard)
+### How to use zenbuVSCode at first time (Mac + Japanese Keyboard)
 
 - Double-click `VSCode.command`
 - Hit `Ctrl`+`Option`+`O` to open workspace
