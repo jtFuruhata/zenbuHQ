@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 zenbuSummoner.command
-#   Ver1.11.190325c
+#   Ver1.11.190325d
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -156,7 +156,7 @@ if [ $(($summoner_check_ssh_agent+$summoner_check_ssh_add)) = 0 ]; then
             unset SSH_KEY
         fi
         if [ $P_NAME == "win" ]; then
-            if [ $summoner_optRecall = 0 ]; then
+            if [ $summoner_optRecall = 1 ]; then
                 ssh-recall-all
             else
                 eval $(echo "$(ssh-agent -k)")
