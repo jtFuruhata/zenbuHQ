@@ -1,6 +1,6 @@
 #
 # 【zenbuPortable】 zenbuManifest .gitignore
-# Ver1.10.190325a
+# Ver1.11.190325c
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -57,6 +57,7 @@
 
 !/zenbuPortable/.vscode/default/user-data/User/
 /zenbuPortable/.vscode/default/user-data/User/*
+!/zenbuPortable/.vscode/default/user-data/User/keybindings.json.template
 !/zenbuPortable/.vscode/default/user-data/User/settings.json.template
 
 #
@@ -123,6 +124,7 @@
 #
 !/zenbuPortable/scripts/
 /zenbuPortable/scripts/*
+!/zenbuPortable/scripts/MANIFEST
 !/zenbuPortable/scripts/zenbuDetector.sh
 !/zenbuPortable/scripts/zenbuEnv.sh
 !/zenbuPortable/scripts/zenbuOpenner.command
@@ -151,7 +153,8 @@
 #
 !/zenbuPortable/ws/
 /zenbuPortable/ws/*
-!/zenbuPortable/ws/.gitkeep
+!/zenbuPortable/ws/home.code-workspace
+!/zenbuPortable/ws/zenbuHQ.code-workspace
 
 !/zenbuPortable/ws/repos/
 /zenbuPortable/ws/repos/*

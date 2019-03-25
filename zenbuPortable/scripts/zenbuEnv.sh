@@ -1,8 +1,11 @@
 #
 # 【 zenbuPortable 】 zenbuEnv.sh
-#   Ver1.10.190325a
+#   Ver1.11.190325c
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
+#
+#
+# ToDo: make zenbuManifest
 #
 echo
 echo "zenbuEnv is preparing environment variables."
@@ -57,5 +60,19 @@ if [ $# -ne 0 ]; then
         . "$depend_sh"
     fi
 fi
+
+# restore .template file if necessory
+# (.template files are indicated "!" in top of line at MANIFEST)
+#
+# ToDo: make zenbuManifest
+cat "$S_ROOT/MANIFEST" | grep ^! \
+| while read template; do
+    srcItem="${HOME}${template:1}"
+    distItem="${srcItem%.*}"
+    if [ ! -e "$distItem" ]; then
+        cp "$srcItem" "$distItem"
+    fi
+done
+
 export T_ROOT="$TMPDIR/zenbuPortable"
 export PATH="${ADD_PATH}${G_ROOT}/bin:${PATH_ORG}"

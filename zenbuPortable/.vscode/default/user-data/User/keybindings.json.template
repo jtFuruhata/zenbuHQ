@@ -1,0 +1,19 @@
+// 既定値を上書きするには、このファイル内にキー バインドを挿入しますauto[]
+[
+    {
+        "key": "ctrl+alt+o",
+        "command": "workbench.action.openWorkspace"
+    },
+    {
+        "key": "ctrl+oem_comma",
+        "command": "workbench.action.openSettingsJson"
+    },
+    {
+        "key": "ctrl+alt+oem_3",
+        "command": "workbench.action.terminal.allowWorkspaceShell"
+    },
+    {
+        "key": "ctrl+shift+g ctrl+shift+s",
+        "command": "git.sync"
+    }
+]

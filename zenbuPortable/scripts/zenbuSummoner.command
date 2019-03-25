@@ -1,28 +1,34 @@
 #
 # 【 zenbuPortable 】 zenbuSummoner.command
-#   Ver1.10.190325b
+#   Ver1.11.190325c
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
 summoner_usage () {
     echo "Usage:"
     echo "  . zenbuSummoner.command [<id>]"
-    echo "  [.] zenbuSummoner.command -k"
+    echo "  [.] zenbuSummoner.command [-k] [-r]"
     echo
     echo "Description:"
     echo "  zenbuPortable SSH agent summoner/recaller"
     echo
     echo "Options:"
-    echo "  -k ... Unset key & Recall all agents (only for Windows)"
+    echo "  -k ... Unset key & Recall agent (only for Windows)"
+    echo "         Unset all keys when exec without ."
+    echo "  -r ... Unset key & Recall **ALL** agents (only for Windows)"
     echo "         Unset all keys when exec without ."
     echo "  <id> ... Use specific identity instead of .ssh/ssh_id"
     exit 1
 }
+summoner_optKill=0
 summoner_optRecall=0
-while getopts "k" options
+while getopts "kr" options
 do
     case $options in
         k)  # Recall agent
+            summoner_optKill=1
+            ;;
+        r)  # Recall all agents
             summoner_optRecall=1
             ;;
     esac
@@ -67,7 +73,7 @@ if [ $(($summoner_check_ssh_agent+$summoner_check_ssh_add)) = 0 ]; then
     export SSH_KEYS="$TMPDIR.ssh"
     mkdir -p "$SSH_KEYS"
 
-    if [ $summoner_optRecall = 0 ]; then
+    if [ $(($summoner_optRecall+$summoner_optKill)) = 0 ]; then
         ## check $SSH_HOME/ssh_id
         if [ ! -z $summoner_optID ]; then
             export SSH_ID="$summoner_optID"
@@ -112,6 +118,7 @@ if [ $(($summoner_check_ssh_agent+$summoner_check_ssh_add)) = 0 ]; then
         if [ $summoner_check_git = 0 ]; then
             git config --global core.sshCommand "ssh -T -o UserKnownHostsFile=$SSH_HOME/known_hosts -F $SSH_HOME/config -i $SSH_KEY"
             git config --global init.templatedir "$G_ROOT/share/git-core/templates"
+            git config --global core.autoCRLF false
             summoner_gitname=`git config --global user.name`
             summoner_check_gitname=$?
             echo "Git user.name  = $summoner_gitname"
@@ -149,7 +156,11 @@ if [ $(($summoner_check_ssh_agent+$summoner_check_ssh_add)) = 0 ]; then
             unset SSH_KEY
         fi
         if [ $P_NAME == "win" ]; then
-            ssh-recall-all
+            if [ $summoner_optRecall = 0 ]; then
+                ssh-recall-all
+            else
+                eval $(echo "$(ssh-agent -k)")
+            fi
         fi
     fi
 

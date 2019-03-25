@@ -1,0 +1,45 @@
+##
+## zenbuHQ MANIFEST Ver1.11.190325c
+##
+ /VSCode.command
+ /VSCode.lnk
+ /zenbuConsole.command
+ /zenbuConsole.lnk
+!/.ssh/ssh_id.template
+ /.vscode/.gitkeep
+ /.vscode/default/.gitkeep
+ /.vscode/default/extensions/.gitkeep
+ /.vscode/default/user-data/.gitkeep
+!/.vscode/default/user-data/User/keybindings.json.template
+!/.vscode/default/user-data/User/settings.json.template
+ /apps/.gitkeep
+ /apps/linux/.gitkeep
+ /apps/mac/.gitkeep
+ /apps/mac/git/.gitkeep
+ /apps/mac/Visual Studio Code.app/.gitkeep
+ /apps/win/.gitkeep
+ /apps/win/32/.gitkeep
+ /apps/win/32/msys/.gitkeep
+ /apps/win/32/PortableGit/.gitkeep
+ /apps/win/32/VSCode/.gitkeep
+ /apps/win/amd64/.gitkeep
+ /apps/win/amd64/msys/.gitkeep
+ /apps/win/amd64/PortableGit/.gitkeep
+ /apps/win/amd64/VSCode/.gitkeep
+ /scripts/MANIFEST
+ /scripts/zenbuDetector.sh
+ /scripts/zenbuEnv.sh
+ /scripts/zenbuOpenner.command
+ /scripts/zenbuPrompt.sh
+ /scripts/zenbuSummoner.command
+ /scripts/zenbuVSCode.command
+ /scripts/linux/set-depend.sh
+ /scripts/mac/macOSname.sh
+ /scripts/mac/set-depend.sh
+ /scripts/win/bash.cmd
+ /scripts/win/portableGitPortal.sh
+ /scripts/win/set-depend.sh
+ /scripts/win/winntOSname.sh
+ /ws/home.code-workspace
+ /ws/zenbuHQ.code-workspace
+ /ws/repos/.gitkeep
