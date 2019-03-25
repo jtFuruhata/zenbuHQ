@@ -1,7 +1,6 @@
 export TMPDIR=`cygpath -u "$temp/"`
-PortableGit="$AP_ROOT/PortableGit"
-export G_ROOT="$PortableGit/bin"
-export SYS_ROOT="$AP_ROOT/msys64"
+export G_ROOT="$AP_ROOT/PortableGit"
+export SYS_ROOT="$AP_ROOT/msys"
 export MSYSTEM="MSYS"
 
-export ADD_PATH="/usr/bin:$PortableGit/cmd:$PortableGit/usr/bin:$ADD_PATH"
+export ADD_PATH="/usr/bin:$G_ROOT/cmd:$G_ROOT/usr/bin:$ADD_PATH"

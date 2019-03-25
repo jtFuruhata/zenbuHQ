@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 zenbuVSCode.command
-#   Ver0.90.190319a
+#   Ver1.10.190325a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -56,7 +56,7 @@ if [ $P_NAME == "win" ]; then
 elif [ $P_NAME == "mac" ]; then
     invoker="$AP_ROOT/Visual Studio Code.app/Contents/Resources/app/bin/code"
 elif [ $P_NAME == "linux" ]; then
-    invoker=""
+    invoker="echo UNDER_CONSTRUCTION"
 fi
 
 "$invoker" --user-data-dir "$UserData" --extensions-dir "$CodeExtensions"

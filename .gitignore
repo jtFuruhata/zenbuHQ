@@ -13,12 +13,13 @@
 #   first: 
 #       /<manifest_dir>/*               # ignore all items in <manifest_dir>
 #       !/<manifest_dir/<file>          # activate the <file>
+#       ...
 #
 #   second: discribe each directories in order from pararent to child
 #       !/<manifest_dir/<dir>/          # activate the <dir>
 #       /<manifest_dir/<dir>/*          # deactivate all children of <dir>
 #       !/<manifest_dir/<dir>/<file>    # re-activate the <file>
-
+#       ...
 #
 # ~
 #
@@ -58,7 +59,9 @@
 /zenbuPortable/.vscode/default/user-data/User/*
 !/zenbuPortable/.vscode/default/user-data/User/settings.json.template
 
+#
 # apps
+#
 !/zenbuPortable/apps/
 /zenbuPortable/apps/*
 !/zenbuPortable/apps/.gitkeep
@@ -115,7 +118,9 @@
 /zenbuPortable/apps/win/amd64/VSCode/*
 !/zenbuPortable/apps/win/amd64/VSCode/.gitkeep
 
-#scripts
+#
+# scripts
+#
 !/zenbuPortable/scripts/
 /zenbuPortable/scripts/*
 !/zenbuPortable/scripts/zenbuDetector.sh

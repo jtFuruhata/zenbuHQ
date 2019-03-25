@@ -1,7 +1,7 @@
 @echo off
 REM
 REM 【 zenbuPortable 】 bash.cmd
-REM   Ver1.00.190322a
+REM   Ver1.10.190325a
 REM Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 REM Copyright (C) 2019 jtLab, Hokkaido Information University
 REM
@@ -12,5 +12,9 @@ REM > bash -c "ls"  # run bash commands and return to cmd.exe process
 REM
 REM set MSYS2_PATH_TYPE=inherit
 set MSYSTEM=MSYS
-set HOME=%~dp0../..
-call %HOME%\apps\win\msys64\usr\bin\bash.exe -l %*
+set HOME=%~dp0..\..
+if "%PROCESSOR_ARCHITECTURE%"=="AMD64" (
+    call %HOME%\apps\win\amd64\msys\usr\bin\bash.exe -l %*
+) else (
+    call %HOME%\apps\win\32\msys\usr\bin\bash.exe -l %*
+)

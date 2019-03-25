@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 zenbuEnv.sh
-#   Ver0.91.190322a
+#   Ver1.10.190325a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -32,7 +32,7 @@ echo
 echo "          【 zenbuPortable 】"
 echo "           - Port Them All - "
 echo
-echo "on $PRETTY_NAME"
+echo "on $AP_NAME, $PRETTY_NAME"
 echo "at $HOME"
 echo
 
@@ -42,7 +42,7 @@ export S_ROOT="$HOME/scripts"
 export AP_ROOT="$A_ROOT/$AP_NAME"
 export SP_ROOT="$S_ROOT/$P_NAME"
 export SYS_ROOT=""
-export G_ROOT="$AP_ROOT/git/bin"
+export G_ROOT="$AP_ROOT/git"
 export ADD_PATH=""
 
 # set platform specific environment variables
@@ -58,4 +58,4 @@ if [ $# -ne 0 ]; then
     fi
 fi
 export T_ROOT="$TMPDIR/zenbuPortable"
-export PATH="${ADD_PATH}${G_ROOT}:${PATH_ORG}"
+export PATH="${ADD_PATH}${G_ROOT}/bin:${PATH_ORG}"

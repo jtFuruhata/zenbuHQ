@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 zenbuSummoner.command
-#   Ver1.00.190322c
+#   Ver1.10.190325b
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -111,6 +111,7 @@ if [ $(($summoner_check_ssh_agent+$summoner_check_ssh_add)) = 0 ]; then
         ## check git config
         if [ $summoner_check_git = 0 ]; then
             git config --global core.sshCommand "ssh -T -o UserKnownHostsFile=$SSH_HOME/known_hosts -F $SSH_HOME/config -i $SSH_KEY"
+            git config --global init.templatedir "$G_ROOT/share/git-core/templates"
             summoner_gitname=`git config --global user.name`
             summoner_check_gitname=$?
             echo "Git user.name  = $summoner_gitname"

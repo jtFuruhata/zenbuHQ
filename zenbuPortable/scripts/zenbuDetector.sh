@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 zenbuDetector.sh
-#   Ver0.50.190319a
+#   Ver1.10.190325a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -65,12 +65,20 @@ else
         exit 1;
     fi
     export P_NAME="win"
-    if [ `uname -m` == "x86_64" ]; then
-        export P_ARCH="amd64"
-    else
-        export P_ARCH="i386"
+    export P_ARCH=${PROCESSOR_ARCHITECTURE,,}
+    if [ $P_ARCH == "x86" ]; then
+        if [ -z $PROCESSOR_ARCHITEW6432 ]; then
+            export P_ARCH="i686"
+        else
+            export P_ARCH=${PROCESSOR_ARCHITEW6432,,}
+        fi
     fi
-    export AP_NAME="$P_NAME"
+    # IA64 and ARM64 run with WOW64 (good luck) 
+    if [ $P_ARCH == "amd64" ]; then
+        export AP_NAME="win/amd64"
+    else
+        export AP_NAME="win/32"
+    fi
     export VERSION_ID="`winntOSname_getNTVer`"
     export VERSION_FULL="`winntOSname_getWinVer`"
     export PRETTY_NAME="`winntOSname_getName`"
