@@ -1,0 +1,153 @@
+#
+# 【zenbuPortable】 zenbuManifest .gitignore
+# Ver1.10.190325a
+# Concepted by TANAHASHI, Jiro (aka jtFuruhata)
+# Copyright (C) 2019 jtLab, Hokkaido Information University
+#
+# These files are ** YOUR SETTINGS **.
+# Please modify each *.template file for commit as public.
+#   /zenbuPortable/.ssh/ssh_id
+#   /zenbuPortable/.vscode/default/user-data/User/settings.json
+#
+# Usage: Yep this .gitignore is very tricky
+#   first: 
+#       /<manifest_dir>/*               # ignore all items in <manifest_dir>
+#       !/<manifest_dir/<file>          # activate the <file>
+#
+#   second: discribe each directories in order from pararent to child
+#       !/<manifest_dir/<dir>/          # activate the <dir>
+#       /<manifest_dir/<dir>/*          # deactivate all children of <dir>
+#       !/<manifest_dir/<dir>/<file>    # re-activate the <file>
+
+#
+# ~
+#
+/zenbuPortable/*
+!/zenbuPortable/VSCode.command
+!/zenbuPortable/VSCode.lnk
+!/zenbuPortable/zenbuConsole.command
+!/zenbuPortable/zenbuConsole.lnk
+
+#
+# .ssh
+#
+!/zenbuPortable/.ssh/
+/zenbuPortable/.ssh/*
+!/zenbuPortable/.ssh/ssh_id.template
+
+#
+# .vscode
+#
+!/zenbuPortable/.vscode/
+/zenbuPortable/.vscode/*
+!/zenbuPortable/.vscode/.gitkeep
+
+!/zenbuPortable/.vscode/default/
+/zenbuPortable/.vscode/default/*
+!/zenbuPortable/.vscode/default/.gitkeep
+
+!/zenbuPortable/.vscode/default/extensions/
+/zenbuPortable/.vscode/default/extensions/*
+!/zenbuPortable/.vscode/default/extensions/.gitkeep
+
+!/zenbuPortable/.vscode/default/user-data/
+/zenbuPortable/.vscode/default/user-data/*
+!/zenbuPortable/.vscode/default/user-data/.gitkeep
+
+!/zenbuPortable/.vscode/default/user-data/User/
+/zenbuPortable/.vscode/default/user-data/User/*
+!/zenbuPortable/.vscode/default/user-data/User/settings.json.template
+
+# apps
+!/zenbuPortable/apps/
+/zenbuPortable/apps/*
+!/zenbuPortable/apps/.gitkeep
+
+!/zenbuPortable/apps/linux/
+/zenbuPortable/apps/linux/*
+!/zenbuPortable/apps/linux/.gitkeep
+
+!/zenbuPortable/apps/mac/
+/zenbuPortable/apps/mac/*
+!/zenbuPortable/apps/mac/.gitkeep
+
+!/zenbuPortable/apps/mac/git/
+/zenbuPortable/apps/mac/git/*
+!/zenbuPortable/apps/mac/git/.gitkeep
+
+!/zenbuPortable/apps/mac/Visual Studio Code.app/
+/zenbuPortable/apps/mac/Visual Studio Code.app/*
+!/zenbuPortable/apps/mac/Visual Studio Code.app/.gitkeep
+
+!/zenbuPortable/apps/win/
+/zenbuPortable/apps/win/*
+!/zenbuPortable/apps/win/.gitkeep
+
+!/zenbuPortable/apps/win/32/
+/zenbuPortable/apps/win/32/*
+!/zenbuPortable/apps/win/32/.gitkeep
+
+!/zenbuPortable/apps/win/32/msys/
+/zenbuPortable/apps/win/32/msys/*
+!/zenbuPortable/apps/win/32/msys/.gitkeep
+
+!/zenbuPortable/apps/win/32/PortableGit/
+/zenbuPortable/apps/win/32/PortableGit/*
+!/zenbuPortable/apps/win/32/PortableGit/.gitkeep
+
+!/zenbuPortable/apps/win/32/VSCode/
+/zenbuPortable/apps/win/32/VSCode/*
+!/zenbuPortable/apps/win/32/VSCode/.gitkeep
+
+!/zenbuPortable/apps/win/amd64/
+/zenbuPortable/apps/win/amd64/*
+!/zenbuPortable/apps/win/amd64/.gitkeep
+
+!/zenbuPortable/apps/win/amd64/msys/
+/zenbuPortable/apps/win/amd64/msys/*
+!/zenbuPortable/apps/win/amd64/msys/.gitkeep
+
+!/zenbuPortable/apps/win/amd64/PortableGit/
+/zenbuPortable/apps/win/amd64/PortableGit/*
+!/zenbuPortable/apps/win/amd64/PortableGit/.gitkeep
+
+!/zenbuPortable/apps/win/amd64/VSCode/
+/zenbuPortable/apps/win/amd64/VSCode/*
+!/zenbuPortable/apps/win/amd64/VSCode/.gitkeep
+
+#scripts
+!/zenbuPortable/scripts/
+/zenbuPortable/scripts/*
+!/zenbuPortable/scripts/zenbuDetector.sh
+!/zenbuPortable/scripts/zenbuEnv.sh
+!/zenbuPortable/scripts/zenbuOpenner.command
+!/zenbuPortable/scripts/zenbuPrompt.sh
+!/zenbuPortable/scripts/zenbuSummoner.command
+!/zenbuPortable/scripts/zenbuVSCode.command
+
+!/zenbuPortable/scripts/linux/
+/zenbuPortable/scripts/linux/*
+!/zenbuPortable/scripts/linux/set-depend.sh
+
+!/zenbuPortable/scripts/mac/
+/zenbuPortable/scripts/mac/*
+!/zenbuPortable/scripts/mac/macOSname.sh
+!/zenbuPortable/scripts/mac/set-depend.sh
+
+!/zenbuPortable/scripts/win/
+/zenbuPortable/scripts/win/*
+!/zenbuPortable/scripts/win/bash.cmd
+!/zenbuPortable/scripts/win/portableGitPortal.sh
+!/zenbuPortable/scripts/win/set-depend.sh
+!/zenbuPortable/scripts/win/winntOSname.sh
+
+#
+# ws
+#
+!/zenbuPortable/ws/
+/zenbuPortable/ws/*
+!/zenbuPortable/ws/.gitkeep
+
+!/zenbuPortable/ws/repos/
+/zenbuPortable/ws/repos/*
+!/zenbuPortable/ws/repos/.gitkeep
