@@ -27,13 +27,13 @@ How to use zenbuVSCode at first time (Mac + Japanese Keyboard)
 ## Release Note:
 - Ver 1.11.190325c
     - add keybindings.json.template (for Japanese keyboard)
-        - Ctrl+Alt+O
+        - `Ctrl`+`Alt`+`O`
             - Workspaces: Open Workspace
-        - Ctrl+Shift+G Ctrl+Shift+G
+        - `Ctrl`+`Shift`+`G` `Ctrl`+`Shift`+`S`
             - Git: Sync
-        - Ctrl+,
+        - `Ctrl`+`,`
             - Preferences: Open Settings (JSON)
-        - Ctrl+Alt+@
+        - `Ctrl`+`Alt`+`@`
             - Terminal: Allow Workspace Shell Configuration
     - add ws/*.code-worspace
     - zenbuEnv restores .template files which was described "!" in MANIFEST if necessory
