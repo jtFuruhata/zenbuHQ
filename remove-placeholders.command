@@ -1,1 +1,0 @@
-find zenbuPortable -name .gitkeep -exec rm {} \;
