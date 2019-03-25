@@ -4,4 +4,14 @@
 			"path": ".."
 		}
 	],
+	"settings": {
+		"terminal.integrated.shell.windows": "bash.exe",
+		"terminal.integrated.shellArgs.windows": [
+		  "--rcfile", "scripts/zenbuPrompt.sh"
+		],
+		"terminal.integrated.shell.osx": "bash",
+		"terminal.integrated.shellArgs.osx": [
+		  "--rcfile", "scripts/zenbuPrompt.sh"
+		],
+	}
 }
