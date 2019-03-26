@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 zenbuSummoner.command
-#   Ver1.11.190325d
+#   Ver1.12.190326a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -48,12 +48,6 @@ if [ -z "$P_NAME" ]; then
     export dontSummonMe=true
     . `dirname $0`/zenbuEnv.sh;
     unset dontSummonMe
-fi
-if [ $P_NAME == "win" ]; then
-    type portal > /dev/null 2>&1
-    if [ $? -gt 0 ]; then
-        . "$SP_ROOT/portableGitPortal.sh"
-    fi
 fi
 
 #

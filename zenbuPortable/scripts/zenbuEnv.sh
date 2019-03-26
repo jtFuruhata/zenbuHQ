@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 zenbuEnv.sh
-#   Ver1.11.190325c
+#   Ver1.12.190326a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -76,3 +76,5 @@ done
 
 export T_ROOT="$TMPDIR/zenbuPortable"
 export PATH="${ADD_PATH}${G_ROOT}/bin:${PATH_ORG}"
+
+echo

@@ -1,5 +1,5 @@
 ##
-## zenbuHQ MANIFEST Ver1.11.190325c
+## zenbuHQ MANIFEST Ver1.12.190326a
 ##
  /VSCode.command
  /VSCode.lnk
@@ -37,7 +37,6 @@
  /scripts/mac/macOSname.sh
  /scripts/mac/set-depend.sh
  /scripts/win/bash.cmd
- /scripts/win/portableGitPortal.sh
  /scripts/win/set-depend.sh
  /scripts/win/winntOSname.sh
  /ws/home.code-workspace
