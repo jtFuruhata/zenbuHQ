@@ -28,6 +28,9 @@
 - Hit `Ctrl`+`Shift`+`@` to open zenbuConsole
 
 ## Release Note:
+- Ver 1.12.190326a
+    - remove portableGitPortal.sh
+        - move to win/set-depend.sh and export -f all functions
 - Ver 1.11.190325c
     - add keybindings.json.template (for Japanese keyboard)
         - `Ctrl`+`Alt`+`O`
