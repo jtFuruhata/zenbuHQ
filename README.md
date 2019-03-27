@@ -28,8 +28,8 @@
 - Hit `Ctrl`+`Shift`+`@` to open zenbuConsole
 
 ## Release Note:
-- Beta Ver 1.20.190327a
-    - add zenbuVSCode selects `user-data` and `extensions` automatically
+- Beta Ver 1.20.190327c
+    - zenbuVSCode selects `user-data` and `extensions` automatically
         - describe in the top of line at `*.code-workspace` such this:
             - `#zenbuVSCode default default`
         - first `default` for `user-data`, zenbuVScode directs to `.vscode/default/user-data`
@@ -59,6 +59,7 @@
         - VSCode.lnk/.command are still remaining for noobies
     - remove portableGitPortal.sh
         - move to win/set-depend.sh and export -f all functions
+    - bugfix: zenbuEnv passes $1 to zenbuSummoner unexpectedly
 - Beta Ver 1.11.190325c
     - add keybindings.json.template (for Japanese keyboard)
         - `Ctrl`+`Alt`+`O`

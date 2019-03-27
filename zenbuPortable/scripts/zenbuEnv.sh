@@ -7,8 +7,6 @@
 #
 # ToDo: make zenbuManifest
 #
-echo
-echo "zenbuEnv is preparing environment variables."
 
 export zenbuPS1="Portable:\W \$ "
 
@@ -36,6 +34,9 @@ if [ -z $zenbuModeParent ]; then
 else
     export zenbuModeParent="others"
 fi
+
+echo
+echo "zenbuEnv is preparing environment variables as Run Mode: $zenbuModeConsole"
 
 #
 # set env if new parent or change console mode
@@ -147,5 +148,5 @@ if [ $zenbuModeParent == "me" -o \
     export T_ROOT="$TMPDIR/zenbuPortable"
     export PATH="${ADD_PATH}${G_ROOT}/bin:${PATH_ORG}"
 
-    . $S_ROOT/zenbuSummoner.command
+    . $S_ROOT/zenbuSummoner.command ""
 fi
