@@ -158,10 +158,10 @@
 /zenbuPortable/ws/default/*
 !/zenbuPortable/ws/default/.gitkeep
 
-!/zenbuPortable/ws/default/.vscode/
-/zenbuPortable/ws/default/.vscode/*
-!/zenbuPortable/ws/default/.vscode/default.code-workspace
-!/zenbuPortable/ws/default/.vscode/HQ.code-workspace
+!/zenbuPortable/ws/.vscode/
+/zenbuPortable/ws/.vscode/*
+!/zenbuPortable/ws/.vscode/default.code-workspace
+!/zenbuPortable/ws/.vscode/HQ.code-workspace
 
 !/zenbuPortable/ws/repos/
 /zenbuPortable/ws/repos/*
