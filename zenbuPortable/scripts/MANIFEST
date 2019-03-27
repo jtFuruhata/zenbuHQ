@@ -1,5 +1,5 @@
 ##
-## zenbuHQ MANIFEST Ver1.12.190326a
+## zenbuHQ MANIFEST Ver1.20.190327a
 ##
  /VSCode.command
  /VSCode.lnk
@@ -39,6 +39,7 @@
  /scripts/win/bash.cmd
  /scripts/win/set-depend.sh
  /scripts/win/winntOSname.sh
- /ws/home.code-workspace
- /ws/zenbuHQ.code-workspace
+ /ws/.gitkeep
+ /ws/.vscode/default.code-workspace
+ /ws/.vscode/HQ.code-workspace
  /ws/repos/.gitkeep

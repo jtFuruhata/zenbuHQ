@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 zenbuSummoner.command
-#   Ver1.12.190326a
+#   Ver1.20.190327a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -38,6 +38,17 @@ summoner_optID="$1"
 
 unset SSH_KEY
 summoner_result=0
+
+addkey () {
+    ssh-add $SSH_KEY
+}
+
+rmkey () {
+    ssh-add -d $SSH_KEY
+}
+
+export -f addkey
+export -f rmkey
 
 echo "zenbuSummoner is recognizing status about SSH & Git"
 echo
@@ -174,10 +185,7 @@ fi
 
 if [ ! -z $SSH_KEY ]; then
     echo
-    echo "If you wish delete key from agent manually, copy & paste this command:"
-    echo '  ssh-add -d $SSH_KEY'
-    echo "If you wish add key to agent manually, copy & paste this command:"
-    echo '  ssh-add $SSH_KEY'
+    echo "You may use 'addkey' and 'rmkey' command for SSH key operation."  
     echo
 fi
 

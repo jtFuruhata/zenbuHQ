@@ -1,27 +1,31 @@
 #
 # 【 zenbuPortable 】 zenbuVSCode.command
-#   Ver1.10.190325a
+#   Ver1.20.190327a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
+
 . `dirname $0`/zenbuEnv.sh $@
-. `dirname $0`/zenbuSummoner.command
 
 echo "zenbuVSCode is preparing to start VSCode."
 
-if [ $# -ne 0 ]; then
-    codeSelector="$1"
-else
-    codeSelector="default"
-fi
-export CodeDataDir="$HOME/.vscode/$codeSelector"
-export CodeTmpDir="${TMPDIR}$codeSelector/.vscode"
-export CodeUserData="$CodeDataDir/user-data"
-export CodeExtensions="$CodeDataDir/extensions"
+#
+# select Code data
+export CodeWS="$HOME/$zenbuPathCodeWS/.vscode/$zenbuModeConsole.code-workspace"
+zenbuModeCodeUserData="default"
+zenbuModeCodeExtensions="default"
+options=(`cat $CodeWS | grep ^#zenbuVSCode`)
+if [ -z ${options[1]} ]; then zenbuModeCodeUserData=${options[1]}; fi
+if [ -z ${options[2]} ]; then zenbuModeCodeExtensions=${options[2]}; fi
+export zenbuModeCodeUserData
+export zenbuModeCodeExtensions
+
+export CodeTmpDir="${TMPDIR}$zenbuModeConsole/.vscode"
+export CodeUserData="$zenbuPathCodeData/$zenbuModeCodeUserData/user-data"
+export CodeExtensions="$zenbuPathCodeData/$zenbuModeCodeExtensions/extensions"
 
 echo "VSCode data directory has located with $CodeDataDir"
 echo 
-ssh-add $SSH_KEY
 
 if [ ! -e $CodeDataDir ]; then
     mkdir "$CodeDataDir"
@@ -59,7 +63,7 @@ elif [ $P_NAME == "linux" ]; then
     invoker="echo UNDER_CONSTRUCTION"
 fi
 
-"$invoker" --user-data-dir "$UserData" --extensions-dir "$CodeExtensions"
+"$invoker" "$CodeWS" --user-data-dir "$UserData" --extensions-dir "$CodeExtensions"
 
 if [ $P_NAME != "win" ]; then
     echo     "Hit enter key **AFTER QUIT VSCode**"
@@ -80,4 +84,3 @@ if [ $P_NAME != "win" ]; then
         echo
     fi 
 fi
-`dirname $0`/zenbuSummoner.command -k

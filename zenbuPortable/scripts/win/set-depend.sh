@@ -1,16 +1,31 @@
 #
 # 【 zenbuPortable 】 win/set-depend.sh
-#   Ver1.12.190326a
+#   Ver1.20.190327a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
 
-export TMPDIR=`cygpath -u "$temp/"`
+if [ -z "$TMPDIR" ]; then
+    export TMPDIR=`cygpath -u "$temp/"`
+fi
 export G_ROOT="$AP_ROOT/PortableGit"
 export SYS_ROOT="$AP_ROOT/msys"
 export MSYSTEM="MSYS"
 
 export ADD_PATH="/usr/bin:$G_ROOT/cmd:$G_ROOT/usr/bin:$ADD_PATH"
+
+## common functions
+clip-key () {
+    clip < $SSH_HOME/$SSH_ID.pub
+}
+
+open-new-bash () {
+    start bash "$@"
+}
+
+export -f clip-key
+export -f open-new-bash
+
 
 #
 # Portal to PortableGit for Windows
@@ -43,7 +58,7 @@ ssh-recall-all () {
 }
 
 
-# util: copy $SSH_ID pubkey to clipboard for Windows
+# util: copy $SSH_ID pubkey to clipboard
 clip-key () {
     clip < $SSH_HOME/$SSH_ID.pub
 }
@@ -55,4 +70,3 @@ export -f ssh-keygen
 export -f ssh-keyscan
 export -f ssh-agent
 export -f ssh-recall-all
-export -f clip-key
