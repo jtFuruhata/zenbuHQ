@@ -1,21 +1,23 @@
 #
-# 【 zenbuPortable 】 mac/set-depend.sh
+# 【 zenbuPortable 】 linux/set-depend.sh
 #   Ver1.20.190327a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
+# ToDo: only for Ubuntu now.
+#
 
-# Mac use defalut $TMPDIR value 
-export ADD_PATH=""
+export TMPDIR="/tmp/"
+export zenbuPathPathAdd=""
 
 
 ## common functions
 clip-key () {
-    pbcopy < $SSH_HOME/$SSH_ID.pub
+    xsel -bi < $SSH_HOME/$SSH_ID.pub
 }
 
 open-new-bash () {
-    open -a "Terminal" "$@"
+    gnome-terminal -- "$@"
 }
 
 export -f clip-key

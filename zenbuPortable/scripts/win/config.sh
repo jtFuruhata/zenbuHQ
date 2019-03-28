@@ -8,11 +8,11 @@
 if [ -z "$TMPDIR" ]; then
     export TMPDIR=`cygpath -u "$temp/"`
 fi
-export G_ROOT="$AP_ROOT/PortableGit"
-export SYS_ROOT="$AP_ROOT/msys"
+export zenbuGit_Path="$Pzenbu/PortableGit"
+export SYSzenbu="$Pzenbu/msys"
 export MSYSTEM="MSYS"
 
-export ADD_PATH="/usr/bin:$G_ROOT/cmd:$G_ROOT/usr/bin:$ADD_PATH"
+export zenbuPathPathAdd="/usr/bin:$zenbuGit_Path/cmd:$zenbuGit_Path/usr/bin:$zenbuPathPathAdd"
 
 ## common functions
 clip-key () {
