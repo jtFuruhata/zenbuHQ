@@ -1,5 +1,5 @@
 ##
-## zenbuHQ MANIFEST Ver1.20.190327a
+## zenbuHQ MANIFEST Ver1.30.190328a
 ##
  /VSCode.command
  /VSCode.lnk
@@ -26,6 +26,7 @@
  /apps/win/amd64/msys/.gitkeep
  /apps/win/amd64/PortableGit/.gitkeep
  /apps/win/amd64/VSCode/.gitkeep
+ /scripts/ENVVARS
  /scripts/MANIFEST
  /scripts/zenbuDetector.sh
  /scripts/zenbuEnv.sh
@@ -33,11 +34,11 @@
  /scripts/zenbuPrompt.sh
  /scripts/zenbuSummoner.command
  /scripts/zenbuVSCode.command
- /scripts/linux/set-depend.sh
+ /scripts/linux/config.sh
  /scripts/mac/macOSname.sh
- /scripts/mac/set-depend.sh
+ /scripts/mac/config.sh
  /scripts/win/bash.cmd
- /scripts/win/set-depend.sh
+ /scripts/win/config.sh
  /scripts/win/winntOSname.sh
  /ws/.gitkeep
  /ws/.vscode/default.code-workspace

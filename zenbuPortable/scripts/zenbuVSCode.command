@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 zenbuVSCode.command
-#   Ver1.20.190327a
+#   Ver1.30.190328a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -11,36 +11,32 @@ echo "zenbuVSCode is preparing to start VSCode."
 
 #
 # select Code data
-export CodeWS="$HOME/$zenbuPathCodeWS/.vscode/$zenbuModeConsole.code-workspace"
+CodeWS="$zenbuPathCodeWS/.vscode/$zenbuModeRun.code-workspace"
 zenbuModeCodeUserData="default"
 zenbuModeCodeExtensions="default"
-options=(`cat $CodeWS | grep ^#zenbuVSCode`)
-if [ -z ${options[1]} ]; then zenbuModeCodeUserData=${options[1]}; fi
-if [ -z ${options[2]} ]; then zenbuModeCodeExtensions=${options[2]}; fi
+cwsopt1=`cwsopt 1`
+cwsopt2=`cwsopt 2`
+if [ ! -z $cwsopt1 ]; then zenbuModeCodeUserData=$cwsopt1; fi
+if [ ! -z $cwsopt2 ]; then zenbuModeCodeExtensions=$cwsopt2; fi
 export zenbuModeCodeUserData
 export zenbuModeCodeExtensions
 
-export CodeTmpDir="${TMPDIR}$zenbuModeConsole/.vscode"
-export CodeUserData="$zenbuPathCodeData/$zenbuModeCodeUserData/user-data"
-export CodeExtensions="$zenbuPathCodeData/$zenbuModeCodeExtensions/extensions"
+echo "user-data = $zenbuModeCodeUserData    extensions = $zenbuModeCodeExtensions"
 
-echo "VSCode data directory has located with $CodeDataDir"
-echo 
+CodeTmpDir="${Tzenbu}$zenbuModeRun/.vscode"
+CodeUserData="$Vzenbu/$zenbuModeCodeUserData/user-data"
+CodeExtensions="$Vzenbu/$zenbuModeCodeExtensions/extensions"
 
-if [ ! -e $CodeDataDir ]; then
-    mkdir "$CodeDataDir"
-    echo "created: $CodeDataDir"
-fi
 if [ ! -e $CodeUserData ]; then
-    mkdir "$CodeUserData"
+    mkdir -p "$CodeUserData"
     echo "created: $CodeUserData"
 fi
 if [ ! -e $CodeExtensions ]; then
-    mkdir "$CodeExtensions"
+    mkdir -p "$CodeExtensions"
     echo "created: $CodeExtensions"
 fi
 
-if [ $P_NAME != "win" ]; then
+if [ $zenbuOSType != "win" ]; then
     echo "Preparing to use $CodeTmpDir. Plese wait..."
     rm -rf "$CodeTmpDir"
     mkdir -p "$CodeTmpDir"
@@ -51,21 +47,26 @@ else
     UserData="$CodeUserData"
 fi
 
+export zenbuModeCodeUserData
+export zenbuModeCodeExtensions
+export zenbuPathCodeUserData="UserData"
+export zenbuPathCodeExtensions="CodeExtensions"
+
 echo 
 echo "Visual Studio Code is running..."
 echo
 
-if [ $P_NAME == "win" ]; then
-    invoker="$AP_ROOT/VSCode/Code.exe"
-elif [ $P_NAME == "mac" ]; then
-    invoker="$AP_ROOT/Visual Studio Code.app/Contents/Resources/app/bin/code"
-elif [ $P_NAME == "linux" ]; then
+if [ $zenbuOSType == "win" ]; then
+    invoker="$Pzenbu/VSCode/Code.exe"
+elif [ $zenbuOSType == "mac" ]; then
+    invoker="$Pzenbu/Visual Studio Code.app/Contents/Resources/app/bin/code"
+elif [ $zenbuOSType == "linux" ]; then
     invoker="echo UNDER_CONSTRUCTION"
 fi
 
 "$invoker" "$CodeWS" --user-data-dir "$UserData" --extensions-dir "$CodeExtensions"
 
-if [ $P_NAME != "win" ]; then
+if [ $zenbuOSType != "win" ]; then
     echo     "Hit enter key **AFTER QUIT VSCode**"
     read -p "    to write back user-data from TMPDIR if necessory: "
 
@@ -77,7 +78,7 @@ if [ $P_NAME != "win" ]; then
         -type f -exec mv -f "{}" "$CodeUserData/" \; -exec echo "move file: {} " \;
     rm -rf "$CodeTmpDir"
 
-    if [ $P_NAME == "mac" ]; then
+    if [ $zenbuOSType == "mac" ]; then
         xattr -cr "$HOME" > /dev/null 2>&1
         echo 
         echo "Please hit Command+W key, thanks."

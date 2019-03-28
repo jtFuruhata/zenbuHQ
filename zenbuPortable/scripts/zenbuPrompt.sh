@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 zenbuPrompt.sh
-#   Ver1.12.190326a
+#   Ver1.30.190328a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -9,4 +9,8 @@
 #
 # Simply, this is rcfile.
 #
-PS1="$zenbuPS1"
+if [ $zenbuModeRun == "default" ]; then
+    PS1="Portable$zenbuPS1"
+else
+    PS1="$zenbuModeRun$zenbuPS1"
+fi

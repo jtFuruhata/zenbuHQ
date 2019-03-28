@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 zenbuSummoner.command
-#   Ver1.20.190327a
+#   Ver1.30.190328a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -55,7 +55,7 @@ echo
 
 #
 # include zenbuEnv and portaleGitPortal if necessary
-if [ -z "$P_NAME" ]; then
+if [ -z "$zenbuOSType" ]; then
     export dontSummonMe=true
     . `dirname $0`/zenbuEnv.sh;
     unset dontSummonMe
@@ -75,7 +75,7 @@ which ssh-add   > /dev/null 2>&1;   summoner_check_ssh_add=$?
 ## preparing SSH envs
 if [ $(($summoner_check_ssh_agent+$summoner_check_ssh_add)) = 0 ]; then
     export SSH_HOME="$HOME/.ssh"
-    export SSH_KEYS="$TMPDIR.ssh"
+    export SSH_KEYS="$Tzenbu/.ssh"
     mkdir -p "$SSH_KEYS"
 
     if [ $(($summoner_optRecall+$summoner_optKill)) = 0 ]; then
@@ -122,7 +122,7 @@ if [ $(($summoner_check_ssh_agent+$summoner_check_ssh_add)) = 0 ]; then
         ## check git config
         if [ $summoner_check_git = 0 ]; then
             git config --global core.sshCommand "ssh -T -o UserKnownHostsFile=$SSH_HOME/known_hosts -F $SSH_HOME/config -i $SSH_KEY"
-            git config --global init.templatedir "$G_ROOT/share/git-core/templates"
+            git config --global init.templatedir "$zenbuPathGit/share/git-core/templates"
             git config --global core.autoCRLF false
             summoner_gitname=`git config --global user.name`
             summoner_check_gitname=$?
@@ -146,6 +146,8 @@ if [ $(($summoner_check_ssh_agent+$summoner_check_ssh_add)) = 0 ]; then
         summoner_ssh_add_l=$?
         # Could not open a connection -> summon agent
         if [ $summoner_ssh_add_l = 2 ]; then
+            unset SSH_AGENT_PID
+            unset SSH_AUTH_SOCK
             echo "Now Summoning SSH agent..." 
             eval $(echo "$(ssh-agent)")
         else
@@ -160,12 +162,14 @@ if [ $(($summoner_check_ssh_agent+$summoner_check_ssh_add)) = 0 ]; then
             rm -f $SSH_KEY
             unset SSH_KEY
         fi
-        if [ $P_NAME == "win" ]; then
+        if [ $zenbuOSType == "win" ]; then
             if [ $summoner_optRecall = 1 ]; then
                 ssh-recall-all
             else
                 eval $(echo "$(ssh-agent -k)")
             fi
+            unset SSH_AGENT_PID
+            unset SSH_AUTH_SOCK
         fi
     fi
 

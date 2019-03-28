@@ -28,6 +28,19 @@
 - Hit `Ctrl`+`Shift`+`@` to open zenbuConsole
 
 ## Release Note:
+- Beta Ver 1.30.190328a
+    - WARNING rename all environment variables as new zenbuEnv architecture
+        - See `scripts/ENVVARS` more details
+    - WARNING rename `set-depend.sh` to `config.sh`
+    - add zenbuLib function
+        - `cwsopt <arg#> [<path/to/file.code-workspace>] ... get zenbuVSCode .code-workspace options
+    - change: zenbuDetector will just warn if system isn't met VSCode requiments
+        - Don't predict that zenbuConsole may work...
+    - change: zenbuPrompt indicates Run Mode instead of `Portable:` except when it's `default`
+    - parental zenbuConsole(Openner) traps signals and cleanup
+        - you know it's not work for SIGKILL (e.g. Windows window close)
+    - change: only parental zenbuEnv calls Detector & Summoner 
+    - bugfix: zenbuSummoner responses wrong SSH_AGENT_PID on Windows
 - Beta Ver 1.20.190327c
     - zenbuVSCode selects `user-data` and `extensions` automatically
         - describe in the top of line at `*.code-workspace` such this:
@@ -35,10 +48,10 @@
         - first `default` for `user-data`, zenbuVScode directs to `.vscode/default/user-data`
         - also second one for `extensions`
         - Yep no problem if you get a JSON error, VSCode works fine.
-    - add zenbuCore functions (are in zenbuEnv)
+    - add zenbuLib functions (are in zenbuEnv)
         - `zc` ... Open new zenbuConsole instance
         - `zv` ... Open new zenbuVSCode instance
-        - `zs` ... Call zenbuSummoner (switching source/command automatically)
+        - `zs [-k] [<id>]` ... Call zenbuSummoner (switching source/command automatically)
         - `zenbuenv` ... (yet experimental)
         - `zenbulib` ... (yet experimental)
     - add common functions (are in set-depends.sh)
@@ -51,7 +64,7 @@
     - WARNING move `.code-workspace` files to these `.vscode`
     - change: zenbuVSCode opens `$1.code-workspace` in `ws/*/.vscode` automatically
         - you may use `default` for `ws` and `HQ` for `zenbuHQ`. default is `default`
-        - you may check this exec mode by `$zenbuModeConsole` from scripts
+        - you may check this exec mode by `$zenbuModeRun` from scripts
     - change: zenbuVSCode no longer ssh-add $SSH_KEY at starting and zenbuSummoner -k at terminating
         - please use `addkey` and `zs -k` manually if necessary
         - zenbuConsole(zenbuOpenner) which is parent still recall agent at terminating
@@ -91,8 +104,6 @@
 
 
 ## Release 2.0 Plan
-- zenbuEnv ... Rename all shellenvs to `zenbuCamelCase`
-    - for show `export | grep "^declare -x zenbu"` 
 - zenbuLib ... Move all functions into zenbuLib architecture
 - zenbuManifest ... Manage zenbuPortable packages with manifest file
 - zenbuDistributor ... Make a custom (light-weight) zenbuPortable

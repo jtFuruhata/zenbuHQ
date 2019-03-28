@@ -1,6 +1,6 @@
 #
-# 【 zenbuPortable 】 win/set-depend.sh
-#   Ver1.20.190327a
+# 【 zenbuPortable 】 win/config.sh
+#   Ver1.30.190328a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -8,11 +8,11 @@
 if [ -z "$TMPDIR" ]; then
     export TMPDIR=`cygpath -u "$temp/"`
 fi
-export zenbuGit_Path="$Pzenbu/PortableGit"
+export zenbuPathGit="$Pzenbu/PortableGit"
 export SYSzenbu="$Pzenbu/msys"
 export MSYSTEM="MSYS"
 
-export zenbuPathPathAdd="/usr/bin:$zenbuGit_Path/cmd:$zenbuGit_Path/usr/bin:$zenbuPathPathAdd"
+export zenbuPathPathAdd="/usr/bin:$zenbuPathGit/cmd:$zenbuPathGit/usr/bin:$zenbuPathPathAdd"
 
 ## common functions
 clip-key () {

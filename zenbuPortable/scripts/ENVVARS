@@ -1,0 +1,56 @@
+#
+# 【 zenbuPortable 】 ENVVARS for zenbuCore Domain
+#   Ver1.30.190328a
+# Concepted by TANAHASHI, Jiro (aka jtFuruhata)
+# Copyright (C) 2019 jtLab, Hokkaido Information University
+#
+# format:
+#  r/m/w zenbuEnvName    "description"    [ownerScript]
+#  r ... read only constant, don't change except the ownerScript 
+#  m ... modifiable constant, you may change value at the ownerScript
+#  w ... you may change value everywhere, it's reflected in actual running
+#
+
+# environment variables using bash or other applications and core abspaths
+:Domain:        [zenbuEnv.sh]
+m Azenbu            "/path/to/apps"
+m Pzenbu            "/path/to/apps/$zenbuPathOS"
+m Szenbu            "/path/to/scripts"
+m SYSzenbu          "/path/to/<system root(/)> */config.sh
+m Tzenbu            "/path/to/<temporary directory for zenbuPortable>"
+m Vzenbu            "/path/to/.vscode"
+m Wzenbu            "/path/to/ws"
+w HOME              "/path/to/~ (e.g. zenbuPortable)"
+w MSYSTEM           "exec mode of MSYS2"
+w PATH              "$PATH, is wellknowned"
+w PS1               "string for prompt" zenbuPrompt.sh
+r SSH_AGENT_PID     "process id of SSH agent" zenbuSummoner.command
+r SSH_AUTH_SOCK     "socket for SSH agent" zenbuSummoner.command
+m SSH_HOME          "/path/to/.ssh" zenbuSummoner.command
+m SSH_ID            "name of SSH authentication key" zenbuSummoner.command
+r SSH_KEY           "/path/to/<SSH_ID>" zenbuSummoner.command
+r SSH_KEYS          "/path/to/<temporary SSH keyring>" zenbuSummoner.command
+w TMPDIR            "/path/to/<temporary directory which is using by OS>/" */config.sh
+
+# zenbuCore environment variables
+:Domain: zenbu  [zenbuenv.sh]
+m PS1               "postfix string for prompt"
+r ModeCodeExtensions "name for VSCode extensions" zenbuVSCode.command
+r ModeCodeUserData  "name for VSCode user-data" zenbuVSCode.command
+r ModeParent        "who is parent bash process"
+r ModeRun           "zenbuPortable Run mode"
+r OSArch            "name of OS(processor) architecture(bitness)" zenbudetector.sh
+r OSName            "full name of OS" zenbuDetector.sh
+r OSType            "short name of OS (win/mac/linux etc.)" zenbuDetector.sh
+r OSVersion         "full version string of OS" zenbuDetector.sh
+r OSVersionID       "identifiable version string of OS" zenbuDetector.sh
+r PathCodeExtensions "/path/to/extensions" zenbuVSCode.command
+r PathCodeUserData  "/path/to/user-data" zenbuVSCode.command
+m PathCodeTmpDir    "/path/to/<temporary VSCode user-data>" zenbuVSCode.command
+r PathCodeWS        "/path/to/.vscode/*.code-workspace"
+r PathCWD           "/path/to/<parental bash start at here>"
+m PathGit           "/path/to/<Git slot>" */config.sh
+r PathHomeOrigin    "$HOME before start the parent bash process"
+r PathOS            "relpath from PathA to OS apps" zenbuDetector.sh
+r PathPathAdd       "zenbuEnv sets this in the top of $PATH, in front of PathPathOrigin"
+r PathPathOrigin    "$PATH before start the parent bash process"

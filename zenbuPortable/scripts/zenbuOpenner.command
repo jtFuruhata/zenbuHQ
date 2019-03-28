@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 zenbuOpenner.command
-#   Ver1.20.190327a
+#   Ver1.30.190328a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -8,8 +8,9 @@
 #
 . `dirname $0`/zenbuEnv.sh $@
 
-bash --rcfile "$S_ROOT/zenbuPrompt.sh"
+trap 'if [ $zenbuModeParent == "me" ]; then 
+    $Szenbu/zenbuSummoner.command -k; 
+    rm -rf $Tzenbu;
+    fi; echo "bye."; exit;' 0 1 2 3 15
 
-if [ $zenbuModeParent == "me" ]; then
-    $S_ROOT/zenbuSummoner.command -k
-fi
+bash --rcfile "$Szenbu/zenbuPrompt.sh"

@@ -1,6 +1,6 @@
 #
-# 【 zenbuPortable 】 linux/set-depend.sh
-#   Ver1.20.190327a
+# 【 zenbuPortable 】 linux/config.sh
+#   Ver1.30.190328a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #

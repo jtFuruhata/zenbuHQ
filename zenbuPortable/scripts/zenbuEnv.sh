@@ -1,31 +1,41 @@
 #
 # 【 zenbuPortable 】 zenbuEnv.sh
-#   Ver1.20.190327a
+#   Ver1.30.190328a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
-#
-# ToDo: make zenbuManifest
-#
 
-export zenbuPS1="Portable:\W \$ "
+export zenbuPS1=":\W \$ "
+
+# Backup $HOME and $PATH
+if [ -z "$zenbuPathHomeOrigin" ]; then
+    export zenbuPathHomeOrigin="$HOME"
+fi
+if [ -z "$zenbuPathPathOrigin" ]; then
+    export zenbuPathPathOrigin="$PATH"
+fi
+
+# set Portable HOME
+cd "`dirname $0`/.."
+export HOME="$PWD"
+export Wzenbu="$HOME/ws"
 
 #
 # preparing console mode
-zenbuModeConsolePrev=$zenbuModeConsole
+zenbuModeRunPrev=$zenbuModeRun
 if [ $# -eq 0 ]; then
-    if [ -z $zenbuModeConsolePrev ]; then
-        export zenbuModeConsole="default"
-        export zenbuPathCWD="ws"
-        export zenbuPathCodeWS="ws"
+    if [ -z $zenbuModeRunPrev ]; then
+        export zenbuModeRun="default"
+        export zenbuPathCWD="$Wzenbu"
+        export zenbuPathCodeWS="$Wzenbu"
     fi
 else
-    export zenbuModeConsole="$1"
-    export zenbuPathCWD="ws/$zenbuModeConsole"
-    export zenbuPathCodeWS="ws/$zenbuModeConsole"
-    if [ $zenbuModeConsole == "HQ" ]; then
-        export zenbuPathCWD=".."
-        export zenbuPathCodeWS="ws"
+    export zenbuModeRun="$1"
+    export zenbuPathCWD="$Wzenbu/$zenbuModeRun"
+    export zenbuPathCodeWS="$Wzenbu/$zenbuModeRun"
+    if [ $zenbuModeRun == "HQ" ]; then
+        export zenbuPathCWD="$HOME"
+        export zenbuPathCodeWS="$Wzenbu"
     fi
 fi
 
@@ -36,58 +46,46 @@ else
 fi
 
 echo
-echo "zenbuEnv is preparing environment variables as Run Mode: $zenbuModeConsole"
+echo "zenbuEnv is preparing environment variables as Run Mode: $zenbuModeRun"
 
 #
 # set env if new parent or change console mode
 if [ $zenbuModeParent == "me" -o \
-    " $zenbuModeConsole" != " $zenbuModeConsolePrev" ]; then
+    " $zenbuModeRun" != " $zenbuModeRunPrev" ]; then
 
     # Detect Platform & Architecture
     # Basically, zenbuPortable depends on the requirements of VSCode.
-    echo "zenbuDetector is recognizing this platform."
-    . "`dirname $0`/zenbuDetector.sh"
-
-    # Backup $HOME and $PATH
-    if [ -z "$HOME_ORG" ]; then
-        export HOME_ORG="$HOME"
+    if [ $zenbuModeParent == "me" ]; then
+        echo "zenbuDetector is recognizing this platform."
+        . "`dirname $0`/zenbuDetector.sh" ""
     fi
-    if [ -z "$PATH_ORG" ]; then
-        export PATH_ORG="$PATH"
-    fi
-
-    # set Portable HOME
-    cd "`dirname $0`/.."
-    export HOME="$PWD"
-    cd "$HOME/$zenbuPathCWD"
 
     # Splash
     echo
     echo "          【 zenbuPortable 】"
     echo "           - Port Them All - "
     echo
-    echo "on $AP_NAME, $PRETTY_NAME"
+    echo "on $zenbuPathOS, $zenbuOSName"
     echo "at $HOME"
     echo
 
-    export zenbuPathCodeData="$HOME/.vscode"
-    export A_ROOT="$HOME/apps"
-    export S_ROOT="$HOME/scripts"
+    export Azenbu="$HOME/apps"
+    export Szenbu="$HOME/scripts"
+    export Vzenbu="$HOME/.vscode"
 
-    export AP_ROOT="$A_ROOT/$AP_NAME"
-    export SP_ROOT="$S_ROOT/$P_NAME"
-    export SYS_ROOT=""
-    export G_ROOT="$AP_ROOT/git"
-    export ADD_PATH=""
+    export Pzenbu="$Azenbu/$zenbuPathOS"
+    export SYSzenbu=""
+    export zenbuPathGit="$Pzenbu/git"
+    export zenbuPathPathAdd=""
 
     # set platform specific environment variables
-    # into $G_ROOT, $TMPDIR, and ":" terminated $ADD_PATH
-    depend_sh="$SP_ROOT/set-depend.sh"
+    # into $zenbuPathGit, $TMPDIR, and ":" terminated $zenbuPathPathAdd
+    depend_sh="$Szenbu/$zenbuOSType/config.sh"
     if [ -f "$depend_sh" ]; then
         . "$depend_sh"
     fi
     if [ $# -ne 0 ]; then
-        depend_sh="$S_ROOT/$1/set-depend.sh"
+        depend_sh="$Szenbu/$1/config.sh"
         if [ -f "$depend_sh" ]; then
             . "$depend_sh"
         fi
@@ -97,7 +95,7 @@ if [ $zenbuModeParent == "me" -o \
     # (.template files are indicated "!" in top of line at MANIFEST)
     #
     # ToDo: make zenbuManifest
-    cat "$S_ROOT/MANIFEST" | grep ^! \
+    cat "$Szenbu/MANIFEST" | grep ^! \
     | while read template; do
         srcItem="${HOME}${template:1}"
         distItem="${srcItem%.*}"
@@ -106,25 +104,35 @@ if [ $zenbuModeParent == "me" -o \
         fi
     done
 
-    ## zenbuCore functions
-    zc () {
-        invoker="open-new-bash $S_ROOT/zenbuOpenner.command"
+    export Tzenbu="${TMPDIR}zenbuPortable"
+    export PATH="${zenbuPathPathAdd}${zenbuPathGit}/bin:${zenbuPathPathOrigin}"
+
+    if [ $zenbuModeParent == "me" ]; then
+        . $Szenbu/zenbuSummoner.command ""
+    fi
+
+    cd "$zenbuPathCWD"
+
+    #
+    ## zenbuLib functions
+    zc () {         # Open new zenbuConsole instance
+        invoker="open-new-bash $Szenbu/zenbuOpenner.command"
         if [ $# = 0 ]; then
             $invoker
         else
             $invoker "$@"
         fi
-    }
-    zv () {
-        invoker="open-new-bash $S_ROOT/zenbuVSCode.command"
+    }; export -f zc
+    zv () {         # Open new zenbuVSCode instance
+        invoker="open-new-bash $Szenbu/zenbuVSCode.command"
         if [ $# = 0 ]; then
             $invoker
         else
             $invoker "$@"
         fi
-    }
-    zs () {
-        invoker="$S_ROOT/zenbuSummoner.command"
+    }; export -f zv
+    zs () {         # Call zenbuSummoner
+        invoker="$Szenbu/zenbuSummoner.command"
         if [ $# = 0 ]; then
             $invoker
         elif [ -z `echo $1 | grep ^-` ]; then
@@ -132,21 +140,20 @@ if [ $zenbuModeParent == "me" -o \
         else
             $invoker "$@"
         fi
-    }
-    zenbuenv () {
+    }; export -f zs
+    cwsopt () {     # get zenbuVSCode .code-workspace options
+        if [ -z "$2" ]; then
+            cws="$zenbuPathCodeWS/.vscode/$zenbuModeRun.code-workspace"
+        else
+            cws="$2"
+        fi
+        options=(`cat "$cws" | grep ^#zenbuVSCode`)
+        echo ${options[$1]}
+    }; export -f cwsopt
+    zenbuenv () {   # show all zenbuEnvs
         export | grep "^declare -x zenbu" | awk -F'declare -x zenbu' '{print $2}' 
-    }
-    zenbulib () {
+    }; export -f zenbuenv
+    zenbulib () {   # show all zenbuLibs
         export -f | grep "^declare -fx" | awk -F'declare -fx ' '{print $2}' 
-    }
-    export -f zc
-    export -f zv
-    export -f zs
-    export -f zenbuenv
-    export -f zenbulib
-
-    export T_ROOT="$TMPDIR/zenbuPortable"
-    export PATH="${ADD_PATH}${G_ROOT}/bin:${PATH_ORG}"
-
-    . $S_ROOT/zenbuSummoner.command ""
+    }; export -f zenbulib
 fi

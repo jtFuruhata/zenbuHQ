@@ -124,6 +124,7 @@
 #
 !/zenbuPortable/scripts/
 /zenbuPortable/scripts/*
+!/zenbuPortable/scripts/ENVVARS
 !/zenbuPortable/scripts/MANIFEST
 !/zenbuPortable/scripts/zenbuDetector.sh
 !/zenbuPortable/scripts/zenbuEnv.sh
@@ -134,17 +135,17 @@
 
 !/zenbuPortable/scripts/linux/
 /zenbuPortable/scripts/linux/*
-!/zenbuPortable/scripts/linux/set-depend.sh
+!/zenbuPortable/scripts/linux/config.sh
 
 !/zenbuPortable/scripts/mac/
 /zenbuPortable/scripts/mac/*
 !/zenbuPortable/scripts/mac/macOSname.sh
-!/zenbuPortable/scripts/mac/set-depend.sh
+!/zenbuPortable/scripts/mac/config.sh
 
 !/zenbuPortable/scripts/win/
 /zenbuPortable/scripts/win/*
 !/zenbuPortable/scripts/win/bash.cmd
-!/zenbuPortable/scripts/win/set-depend.sh
+!/zenbuPortable/scripts/win/config.sh
 !/zenbuPortable/scripts/win/winntOSname.sh
 
 #
