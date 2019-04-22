@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 zenbuEnv.sh
-#   Ver1.30.190328a
+#   Ver1.40.190419a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -24,7 +24,9 @@ export Wzenbu="$HOME/ws"
 # preparing console mode
 zenbuModeRunPrev=$zenbuModeRun
 if [ $# -eq 0 ]; then
+echo "no args passing"
     if [ -z $zenbuModeRunPrev ]; then
+echo "mode parent"
         export zenbuModeRun="default"
         export zenbuPathCWD="$Wzenbu"
         export zenbuPathCodeWS="$Wzenbu"
@@ -33,16 +35,14 @@ else
     export zenbuModeRun="$1"
     export zenbuPathCWD="$Wzenbu/$zenbuModeRun"
     export zenbuPathCodeWS="$Wzenbu/$zenbuModeRun"
-    if [ $zenbuModeRun == "HQ" ]; then
-        export zenbuPathCWD="$HOME"
+    if [ ! -d "$zenbuPathCWD" ]; then
+        if [ $zenbuModeRun == "HQ" ]; then
+            export zenbuPathCWD="$HOME"
+        else
+            export zenbuPathCWD="$Wzenbu"
+        fi
         export zenbuPathCodeWS="$Wzenbu"
     fi
-fi
-
-if [ -z $zenbuModeParent ]; then
-    export zenbuModeParent="me"
-else
-    export zenbuModeParent="others"
 fi
 
 echo
@@ -50,13 +50,14 @@ echo "zenbuEnv is preparing environment variables as Run Mode: $zenbuModeRun"
 
 #
 # set env if new parent or change console mode
-if [ $zenbuModeParent == "me" -o \
+if [ $SHLVL -le 3 -o \
     " $zenbuModeRun" != " $zenbuModeRunPrev" ]; then
 
     # Detect Platform & Architecture
     # Basically, zenbuPortable depends on the requirements of VSCode.
-    if [ $zenbuModeParent == "me" ]; then
+    if [ $SHLVL -le 3 ]; then
         echo "zenbuDetector is recognizing this platform."
+        zenbuModeParentSHLVL=$SHLVL
         . "`dirname $0`/zenbuDetector.sh" ""
     fi
 
@@ -64,10 +65,15 @@ if [ $zenbuModeParent == "me" -o \
     echo
     echo "          【 zenbuPortable 】"
     echo "           - Port Them All - "
-    echo
+    echo 
     echo "on $zenbuPathOS, $zenbuOSName"
     echo "at $HOME"
     echo
+    if [ "$SHLVL" == "$zenbuModeParentSHLVL" ]; then
+        echo " I am a Parent Console."
+        echo " Please DON'T KILL ME while my children are alive."
+        echo
+    fi
 
     export Azenbu="$HOME/apps"
     export Szenbu="$HOME/scripts"
@@ -75,6 +81,8 @@ if [ $zenbuModeParent == "me" -o \
 
     export Pzenbu="$Azenbu/$zenbuPathOS"
     export SYSzenbu=""
+    export zenbuPathCore="$Szenbu/zenbuCore"
+    export zenbuPathLib="$zenbuPathCore/zenbuLib.sh"
     export zenbuPathGit="$Pzenbu/git"
     export zenbuPathPathAdd=""
 
@@ -107,7 +115,7 @@ if [ $zenbuModeParent == "me" -o \
     export Tzenbu="${TMPDIR}zenbuPortable"
     export PATH="${zenbuPathPathAdd}${zenbuPathGit}/bin:${zenbuPathPathOrigin}"
 
-    if [ $zenbuModeParent == "me" ]; then
+    if [ "$SHLVL" == "$zenbuModeParentSHLVL" ]; then
         . $Szenbu/zenbuSummoner.command ""
     fi
 
@@ -156,4 +164,8 @@ if [ $zenbuModeParent == "me" -o \
     zenbulib () {   # show all zenbuLibs
         export -f | grep "^declare -fx" | awk -F'declare -fx ' '{print $2}' 
     }; export -f zenbulib
+    zl () {
+        . "$zenbuPathLib"
+        zenbuLib "$@"
+    }; export -f zl
 fi

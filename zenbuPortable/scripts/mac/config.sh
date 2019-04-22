@@ -1,11 +1,12 @@
 #
 # 【 zenbuPortable 】 mac/config.sh
-#   Ver1.30.190328a
+#   Ver1.40.190419a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
 
 # Mac use defalut $TMPDIR value 
+export zenbuModeParentSHLVL=4
 export zenbuPathPathAdd=""
 
 
@@ -15,7 +16,11 @@ clip-key () {
 }
 
 open-new-bash () {
-    open -a "Terminal" "$@"
+    osascript <<EOC
+    	tell application "Terminal"
+    	do script "$@"
+    	end tell
+EOC
 }
 
 export -f clip-key

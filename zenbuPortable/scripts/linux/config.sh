@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 linux/config.sh
-#   Ver1.30.190328a
+#   Ver1.40.190419a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -8,6 +8,7 @@
 #
 
 export TMPDIR="/tmp/"
+export zenbuModeParentSHLVL=3
 export zenbuPathPathAdd=""
 
 

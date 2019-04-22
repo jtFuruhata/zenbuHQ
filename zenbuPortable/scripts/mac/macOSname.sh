@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 macOSname.sh
-#   Ver1.00.190319a
+#   Ver1.40.190419a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -28,7 +28,8 @@ macOSname=(
     "macOS Mojave"
 )
 
-macOSname_ver=( `sw_vers -productVersion | tr -s '.' ' '`)
+macOSname_ver=( `sw_vers -productVersion | tr -s '.' ' '` )
+macOSname_darwinVer=( `uname -r | tr -s '.' ' '` )
 
 macOSname_getDarwinVer () {
     echo "${macOSname_ver[1]}"

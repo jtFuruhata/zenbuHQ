@@ -161,8 +161,8 @@
 
 !/zenbuPortable/ws/.vscode/
 /zenbuPortable/ws/.vscode/*
-!/zenbuPortable/ws/.vscode/default.code-workspace
-!/zenbuPortable/ws/.vscode/HQ.code-workspace
+!/zenbuPortable/ws/.vscode/default.code-workspace.template
+!/zenbuPortable/ws/.vscode/HQ.code-workspace.template
 
 !/zenbuPortable/ws/repos/
 /zenbuPortable/ws/repos/*

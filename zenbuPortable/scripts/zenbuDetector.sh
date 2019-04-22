@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 zenbuDetector.sh
-#   Ver1.30.190328a
+#   Ver1.40.190419a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -59,8 +59,7 @@ elif [ `uname` == "Linux" ]; then
         export zenbuOSVersion="${ver[0]}.${ver[1]}"
     fi
 else
-    pacman --version > /dev/null 2>&1
-    if [ $? -gt 0 ]; then
+    if [ $OSTYPE != "msys" ]; then
         echo "Sorry, zenbuPortable supports only with MSYS2."
         exit 1;
     fi

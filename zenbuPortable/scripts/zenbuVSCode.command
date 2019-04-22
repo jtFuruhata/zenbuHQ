@@ -1,6 +1,7 @@
+#!/usr/bin/env bash
 #
 # 【 zenbuPortable 】 zenbuVSCode.command
-#   Ver1.30.190328a
+#   Ver1.40.190419a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -20,8 +21,6 @@ if [ ! -z $cwsopt1 ]; then zenbuModeCodeUserData=$cwsopt1; fi
 if [ ! -z $cwsopt2 ]; then zenbuModeCodeExtensions=$cwsopt2; fi
 export zenbuModeCodeUserData
 export zenbuModeCodeExtensions
-
-echo "user-data = $zenbuModeCodeUserData    extensions = $zenbuModeCodeExtensions"
 
 CodeTmpDir="${Tzenbu}$zenbuModeRun/.vscode"
 CodeUserData="$Vzenbu/$zenbuModeCodeUserData/user-data"

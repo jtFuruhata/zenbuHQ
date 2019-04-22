@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 win/config.sh
-#   Ver1.30.190328a
+#   Ver1.40.190419a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -8,6 +8,7 @@
 if [ -z "$TMPDIR" ]; then
     export TMPDIR=`cygpath -u "$temp/"`
 fi
+export zenbuModeParentSHLVL=2
 export zenbuPathGit="$Pzenbu/PortableGit"
 export SYSzenbu="$Pzenbu/msys"
 export MSYSTEM="MSYS"
@@ -35,6 +36,7 @@ export -f open-new-bash
 # e.g.
 # $ dir         # invoke bash.exe 'dir' command; alias to 'ls'
 # $ portal dir  # invoke cmd.exe 'dir' command
+# $ portal nano # use nano on PortableGit
 #
 portal () {
     eval $(echo "cmd /C \"$(echo "$@")\"")

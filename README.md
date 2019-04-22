@@ -3,6 +3,7 @@
 ## Welcome to zenbuHQ, the basecamp for all of zenbuPortables.
 【zenbuPortable】is Beta version now.
 
+
 ### Getting Started:
 - See [Wiki](https://github.com/jtFuruhata/zenbuHQ/wiki)
 
@@ -28,6 +29,12 @@
 - Hit `Ctrl`+`Shift`+`@` to open zenbuConsole
 
 ## Release Note:
+- Beta Ver 1.40.190419a
+    - add new zenbuLib architecture; Object Oriented BASH
+    - change: use $SHLVL to identify who is parent console
+    - zenbuDetector becomes little faster on Windows
+    - bugfix: zv can't invoke VSCode with RunMode on Mac
+    - ToDo: cwsopt makes trouble on some of extensions...
 - Beta Ver 1.30.190328a
     - WARNING rename all environment variables as new zenbuEnv architecture
         - See `scripts/ENVVARS` more details
@@ -104,6 +111,12 @@
 
 
 ## Release 2.0 Plan
+- ~~zenbuEnv ... Rename all shellenvs to `zenbuCamelCase`~~
+    - ~~for show `export | grep "^declare -x zenbu"`~~
+    *was implemented*
 - zenbuLib ... Move all functions into zenbuLib architecture
 - zenbuManifest ... Manage zenbuPortable packages with manifest file
 - zenbuDistributor ... Make a custom (light-weight) zenbuPortable
+- zenbuPortal ... Use local install of zenbuPortable apps
+- zenbuCore ... Migrate to Hybrid-MSYS64/32(with Git for Windows) architecture
+- zenbuCargo/Slot/Cartridge architecture make runnable with common .sh(zenbuLib)

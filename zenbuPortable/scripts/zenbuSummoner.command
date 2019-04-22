@@ -1,6 +1,7 @@
+#!/usr/bin/env bash
 #
 # 【 zenbuPortable 】 zenbuSummoner.command
-#   Ver1.30.190328a
+#   Ver1.40.190419a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
