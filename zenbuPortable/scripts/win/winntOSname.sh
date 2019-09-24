@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 winntOSname.sh
-#   Ver1.40.190419a
+#   Ver1.45.190924a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -33,6 +33,7 @@ winntOSname=(
     ["16299"]="Windows 10 Fall Creators Update (Version 1709)"
     ["17134"]="Windows 10 April 2018 Update (Version 1803)"
     ["17763"]="Windows 10 October 2018 Update (Version 1809)"
+    ["18362"]="Windows 10 May 2019 Update (Version 1903)"
 )
 
 #     build#  NT Version
@@ -58,6 +59,7 @@ winntVersion=(
     ["16299"]="10.0 1709"
     ["17134"]="10.0 1803"
     ["17763"]="10.0 1809"
+    ["18362"]="10.0 1903"
 )
 
 declare -i winntOSname_buildNo=0

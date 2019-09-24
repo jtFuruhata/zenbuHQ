@@ -29,6 +29,10 @@
 - Hit `Ctrl`+`Shift`+`@` to open zenbuConsole
 
 ## Release Note:
+- Beta Ver 1.45.190924a
+    - add Node.js feature (on $Pzenbu/node.js)
+    - support Windows10 1903
+    - support macOS Catalina
 - Beta Ver 1.40.190419a
     - add new zenbuLib architecture; Object Oriented BASH
     - change: use $SHLVL to identify who is parent console

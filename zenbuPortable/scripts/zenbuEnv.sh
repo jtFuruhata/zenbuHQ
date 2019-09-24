@@ -84,6 +84,7 @@ if [ $SHLVL -le 3 -o \
     export zenbuPathCore="$Szenbu/zenbuCore"
     export zenbuPathLib="$zenbuPathCore/zenbuLib.sh"
     export zenbuPathGit="$Pzenbu/git"
+    export zenbuPathNode="$Pzenbu/node.js"
     export zenbuPathPathAdd=""
 
     # set platform specific environment variables
@@ -113,7 +114,7 @@ if [ $SHLVL -le 3 -o \
     done
 
     export Tzenbu="${TMPDIR}zenbuPortable"
-    export PATH="${zenbuPathPathAdd}${zenbuPathGit}/bin:${zenbuPathPathOrigin}"
+    export PATH="${zenbuPathPathAdd}${zenbuPathGit}/bin:${zenbuPathNode}:${zenbuPathPathOrigin}"
 
     if [ "$SHLVL" == "$zenbuModeParentSHLVL" ]; then
         . $Szenbu/zenbuSummoner.command ""

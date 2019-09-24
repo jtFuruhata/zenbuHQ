@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 macOSname.sh
-#   Ver1.40.190419a
+#   Ver1.45.190923a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -26,6 +26,7 @@ macOSname=(
     "macOS Sierra"
     "macOS High Sierra"
     "macOS Mojave"
+    "macOS Catalina"
 )
 
 macOSname_ver=( `sw_vers -productVersion | tr -s '.' ' '` )

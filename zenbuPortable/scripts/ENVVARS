@@ -1,6 +1,6 @@
 #
 # 【 zenbuPortable 】 ENVVARS for zenbuCore Domain
-#   Ver1.40.190419a
+#   Ver1.45.190924a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
 # Copyright (C) 2019 jtLab, Hokkaido Information University
 #
@@ -52,6 +52,7 @@ r PathCWD           "/path/to/<parental bash start at here>"
 m PathGit           "/path/to/<Git slot>" */config.sh
 r PathHomeOrigin    "$HOME before start the parent bash process"
 r PathLib           "/path/to/zenbuLib.sh" 
+r PathNode          "/path/to/<Node.js slot>"
 r PathOS            "relpath from PathA to OS apps" zenbuDetector.sh
 r PathPathAdd       "zenbuEnv sets this in the top of $PATH, in front of PathPathOrigin"
 r PathPathOrigin    "$PATH before start the parent bash process"
