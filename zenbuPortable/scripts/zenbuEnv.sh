@@ -1,8 +1,8 @@
 #
 # 【 zenbuPortable 】 zenbuEnv.sh
-#   Ver1.40.190419a
+#   Ver1.41.200205a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
-# Copyright (C) 2019 jtLab, Hokkaido Information University
+# Copyright (C) 2019-2020 jtLab, Hokkaido Information University
 #
 
 export zenbuPS1=":\W \$ "
@@ -114,7 +114,10 @@ if [ $SHLVL -le 3 -o \
     done
 
     export Tzenbu="${TMPDIR}zenbuPortable"
-    export PATH="${zenbuPathPathAdd}${zenbuPathGit}/bin:${zenbuPathNode}:${zenbuPathPathOrigin}"
+    if [ -z "$zenbuPathPath" ]; then
+        export zenbuPathPath="${zenbuPathPathAdd}${zenbuPathGit}/bin:${zenbuPathNode}:${zenbuPathPathOrigin}"
+        export PATH="$zenbuPathPath"
+    fi
 
     if [ "$SHLVL" == "$zenbuModeParentSHLVL" ]; then
         . $Szenbu/zenbuSummoner.command ""
