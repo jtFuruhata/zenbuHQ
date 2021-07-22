@@ -1,8 +1,8 @@
 #
 # 【 zenbuPortable 】 winntOSname.sh
-#   Ver1.45.190924a
+#   Ver1.46.210722a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
-# Copyright (C) 2019 jtLab, Hokkaido Information University
+# Copyright (C) 2019-2021 jtLab, Hokkaido Information University
 #
 # Usage:
 # winntOSname_getWinVer () ... 10.0.17134.648
@@ -34,6 +34,10 @@ winntOSname=(
     ["17134"]="Windows 10 April 2018 Update (Version 1803)"
     ["17763"]="Windows 10 October 2018 Update (Version 1809)"
     ["18362"]="Windows 10 May 2019 Update (Version 1903)"
+    ["18363"]="Windows 10 November 2019 Update (Version 1909)"
+    ["19041"]="Windows 10 20H1 (Version 2004)"
+    ["19042"]="Windows 10 (Version 20H2)"
+    ["19043"]="Windows 10 (Version 21H1)"
 )
 
 #     build#  NT Version
@@ -60,12 +64,16 @@ winntVersion=(
     ["17134"]="10.0 1803"
     ["17763"]="10.0 1809"
     ["18362"]="10.0 1903"
+    ["18363"]="10.0 1909"
+    ["19041"]="10.0 2004"
+    ["19042"]="10.0 20H2"
+    ["19043"]="10.0 21H1"
 )
 
 declare -i winntOSname_buildNo=0
 
 winntOSname_getWinVer () {
-    echo "`cmd /C ver \
+    echo "`cmd.exe /C ver \
         | tr -s '[]' ':' \
         | awk -F':' '{print $2}' \
         | awk -F' ' '{print $2}'`"
