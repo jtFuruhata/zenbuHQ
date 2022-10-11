@@ -1,7 +1,7 @@
 # 【 zenbuPortable 】
 # 　 Port Them All.
 ## Welcome to zenbuHQ, the basecamp for all of zenbuPortables.
-【zenbuPortable】is Beta version now.
+**DEPRECATED** The 【zenbuPortable】 project was over.
 
 
 ### Getting Started:
