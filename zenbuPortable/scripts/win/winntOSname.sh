@@ -1,8 +1,8 @@
 #
 # 【 zenbuPortable 】 winntOSname.sh
-#   Ver1.46.210722a
+#   Ver1.47.231205a
 # Concepted by TANAHASHI, Jiro (aka jtFuruhata)
-# Copyright (C) 2019-2021 jtLab, Hokkaido Information University
+# Copyright (C) 2019-2023 jtLab, Hokkaido Information University
 #
 # Usage:
 # winntOSname_getWinVer () ... 10.0.17134.648
@@ -68,6 +68,7 @@ winntVersion=(
     ["19041"]="10.0 2004"
     ["19042"]="10.0 20H2"
     ["19043"]="10.0 21H1"
+    ["19044"]="10.0 21H2"
 )
 
 declare -i winntOSname_buildNo=0
